@@ -1,6 +1,17 @@
 = Git niveau 1
 
 == Environnement
+
+NOTE: Note
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that...
+
 Pour ce hands-on il vous faut :
 
 - Eclipse Kepler ou un EDI sous lequel vous savez créer un projet Maven simple
@@ -16,11 +27,11 @@ Pour ce hands-on il vous faut :
 
 Cette activité pratique s'effectuera par couple de développeurs. Chaque couple disposera de ses propres projets. Les deux membre du groupe doivent être physiquement côte-à-côte pour faciliter l'échange.
 
-Les couples seront nommés de la manière suivante : couple un, couple deux, etc.
+Les couples seront nommés de la manière suivante : couple *un*, couple *deux*, etc.
 
-Au sein d'un couple, l'un des deux développeurs s'appellera A et l'autre B. La plupart des consignes seront précédées d'un de ces deux alias. Cela signifie que seul le développeur concerné effectue l'action demandée.
+Au sein d'un couple, l'un des deux développeurs s'appellera *A* et l'autre *B*. La plupart des consignes seront précédées d'un de ces deux alias. Cela signifie que seul le développeur concerné effectue l'action demandée.
 
-Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans aucun commit), correspondant à deux projets (A-project et B-project). Les URL des dépôts sont formés de la manière suivante :
+Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans aucun commit), correspondant à deux projets (*A-project* et *B-project*). Les URL des dépôts sont formés de la manière suivante :
 
 - A-project : https://github.com/bastien-bonnet/NOM_COUPLE-A-project
 - B-project : https://github.com/bastien-bonnet/NOM_COUPLE-B-project
@@ -31,8 +42,8 @@ Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans 
 Créer un project Maven simple (vide).
 Dans Eclipse : File > new > Maven Project puis cocher Create simple project (skip archetype selection).
 
-- A : artifact Id : « A-project ». Créer une classe CA avec un attribut de votre choix nommé field.
-- B : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
+- *A* : artifact Id : « A-project ». Créer une classe CA avec un attribut de votre choix nommé field.
+- *B* : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
 
 === Initialisation du dépôt local
 Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande ls pour vérifier. Le résultat doit contenir src et pom.xml.
@@ -40,10 +51,10 @@ Initialiser le dépôt git :
 
 	git init
 
-Si vous faites un ls -A vous remarquerez qu'un dossier .git est apparu. Il s'agit de votre dépôt local, dans lequel vous effectuerez vos commmits avant de les envoyer sur le dépôt central.
+Si vous faites un `ls -A` vous remarquerez qu'un dossier `.git` est apparu. Il s'agit de votre dépôt local, dans lequel vous effectuerez vos commmits avant de les envoyer sur le dépôt central.
 
 === Premier commit
-Lancez la commande git status. Cette commande permet de voir l'état de la copie de travail, c'est-à-dire ce qui est déjà versionné mais pas soumis (commit), et ce qui n'est pas versionné. Dans notre cas, rien n'est encore versionné.
+Lancez la commande `git status`. Cette commande permet de voir l'état de la copie de travail, c'est-à-dire ce qui est déjà versionné mais pas soumis (commit), et ce qui n'est pas versionné. Dans notre cas, rien n'est encore versionné.
 Nous allons utiliser la commande git add pour sélectionner des fichiers pour le commit :
 
 	git add src pom.xml
@@ -101,7 +112,7 @@ Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vo
 Pour bien visualiser que l'opération git commit ne concerne que le dépôt local, aller sur la page github du projet (même URL que le projet) et constater qu'aucun commit n'est encore présent sur le dépôt central.
 
 Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
-A : Lancer la commande :
+*A* : Lancer la commande :
 
 	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-A-project
 
@@ -123,7 +134,7 @@ Retourner sur la page github du projet (même URL que le projet) et constater qu
 
 === Récupération d'un projet déjà existant
 Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central. NB : il faut lancer la commande à la racine de votre workspace eclipse.
-A :
+*A* :
 
 	git clone https://github.com/bastien-bonnet/NOM_COUPLE-B-project.git
 
@@ -136,9 +147,9 @@ B :
 Importons ensuite le projet sous eclipse (Existing maven project).
 
 === Récupérer les modifications des autres développeurs
-- A : créer une nouvelle classe sur B-project, commit et push. piège
+- *A* : créer une nouvelle classe sur B-project, commit et push. piège
 - B : créer une nouvelle classe sur A-project, commit et push. piège
-- A :
+- *A* :
 ** Attendre le push de B, puis récupérer les modifications de B sur le A-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
 
 	git pull origin master
