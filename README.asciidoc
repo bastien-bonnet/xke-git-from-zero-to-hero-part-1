@@ -82,7 +82,7 @@ Si c'est la première fois que vous utilisez git sur votre poste, après la comm
 === Les fichiers à ignorer
 Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
 
-.\.gitignore
+.gitignore
 [source,shell]
 ----
 /target
