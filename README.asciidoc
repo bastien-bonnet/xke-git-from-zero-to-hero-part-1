@@ -11,3 +11,17 @@ Pour ce hands-on il vous faut :
 - un visualiseur de différence graphique, par exemple meld. Sous Ubuntu :
 
 	sudo apt-get install meld
+
+== Format
+
+Cette activité pratique s'effectuera par couple de développeurs. Chaque couple disposera de ses propres projets. Les deux membre du groupe doivent être physiquement côte-à-côte pour faciliter l'échange.
+
+Les couples seront nommés de la manière suivante : couple un, couple deux, etc.
+
+Au sein d'un couple, l'un des deux développeurs s'appellera A et l'autre B. La plupart des consignes seront précédées d'un de ces deux alias. Cela signifie que seul le développeur concerné effectue l'action demandée.
+
+Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans aucun commit), correspondant à deux projets (A-project et B-project). Les URL des dépôts sont formés de la manière suivante :
+
+- A-project : https://github.com/bastien-bonnet/NOM_COUPLE-A-project
+- B-project : https://github.com/bastien-bonnet/NOM_COUPLE-B-project
+
