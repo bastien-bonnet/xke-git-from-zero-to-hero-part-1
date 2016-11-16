@@ -25,3 +25,289 @@ Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans 
 - A-project : https://github.com/bastien-bonnet/NOM_COUPLE-A-project
 - B-project : https://github.com/bastien-bonnet/NOM_COUPLE-B-project
 
+== Consignes
+
+=== Création du projet
+Créer un project Maven simple (vide).
+Dans Eclipse : File > new > Maven Project puis cocher Create simple project (skip archetype selection).
+
+- A : artifact Id : « A-project ». Créer une classe CA avec un attribut de votre choix nommé field.
+- B : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
+
+=== Initialisation du dépôt local
+Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande ls pour vérifier. Le résultat doit contenir src et pom.xml.
+Initialiser le dépôt git :
+
+	git init
+
+Si vous faites un ls -A vous remarquerez qu'un dossier .git est apparu. Il s'agit de votre dépôt local, dans lequel vous effectuerez vos commmits avant de les envoyer sur le dépôt central.
+
+=== Premier commit
+Lancez la commande git status. Cette commande permet de voir l'état de la copie de travail, c'est-à-dire ce qui est déjà versionné mais pas soumis (commit), et ce qui n'est pas versionné. Dans notre cas, rien n'est encore versionné.
+Nous allons utiliser la commande git add pour sélectionner des fichiers pour le commit :
+
+	git add src pom.xml
+
+Be Careful
+La commande add de git fonctionne différemment de celle de SVN :
+svn add file.txt marque un fichier non versionné comme nouveau fichier à versionner. Il pourra alors être soumis (svn commit) ;
+git add file.txt marque un fichier comme candidat au prochain commit, qu'il soit déjà versionné ou pas. Au prochain git commit, il fera partie de la liste des fichiers à soumettre.
+
+
+
+Lancez à nouveau la commande git status. On constate à présent que les fichiers ajoutés sont présents dans la section des changements qui vont êtres soumis (commit).
+
+À présent, nous allons soumettre les changements dans le dépôt local avec la commande git commit :
+
+	git commit
+
+git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
+Changer l'éditeur de texte par défaut
+Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (cela annulera le commit) et définissez la variable EDITOR dans votre shell (exemple pour vim, vous pouvez remplacer par emacs, nano ou autre) :
+
+	export EDITOR=vim
+
+Vous pouvez ensuite reprendre votre commit.
+
+
+
+Si c'est la première fois que vous utilisez git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre git (nom d'utilisateur, email).
+
+=== Les fichiers à ignorer
+Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
+
+.gitignore
+
+	/target
+	/.settings
+	/.project
+	/.classpath
+
+
+
+Lancer à nouveau git status et constater que les fichiers ajoutés dans le fichier .gitignore ne sont plus mentionnés dans le message.
+
+Maintenant, ajoutez le fichier .gitignore avec git add, effectuez le commit local avec git commit.
+Soumettre l'ensemble des fichiers modifiés
+Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vous pouvez utiliser l'option -a qui ajoute à la liste de commit tous les fichiers déjà versionnés qui ont été modifiés :
+
+	git commit -a
+
+
+
+=== Associer un dépôt central au projet
+À présent, nous avons soumis nos modifications dans le dépôt local, mais il nous faut encore les « pousser » sur le dépôt central afin de les rendre accessibles aux autres collaborateurs.
+
+Pour bien visualiser que l'opération git commit ne concerne que le dépôt local, aller sur la page github du projet (même URL que le projet) et constater qu'aucun commit n'est encore présent sur le dépôt central.
+
+Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
+A : Lancer la commande :
+
+	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-A-project
+
+
+B : Lancer la commmande :
+
+	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-B-project
+
+
+
+=== Pousser ses modifications sur le dépôt central
+Maintenant que nous avons associé un dépôt central au projet, nous allons « pousser » nos modifications vers ce dépôt. Pour ce faire, il faut dire sur quel dépôt l'on souhaite « pousser » et quelle branche est concernée. Ici, il s'agit de la branche principale, toujours nommée master (équivalent du trunk de SVN) :
+
+	git push origin master
+
+
+
+Retourner sur la page github du projet (même URL que le projet) et constater que les commits on bien été propagées sur le dépôt central.
+
+=== Récupération d'un projet déjà existant
+Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central. NB : il faut lancer la commande à la racine de votre workspace eclipse.
+A :
+
+	git clone https://github.com/bastien-bonnet/NOM_COUPLE-B-project.git
+
+B :
+
+	git clone https://github.com/bastien-bonnet/NOM_COUPLE-A-project.git
+
+
+
+Importons ensuite le projet sous eclipse (Existing maven project).
+
+=== Récupérer les modifications des autres développeurs
+- A : créer une nouvelle classe sur B-project, commit et push. piège
+- B : créer une nouvelle classe sur A-project, commit et push. piège
+- A :
+** Attendre le push de B, puis récupérer les modifications de B sur le A-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
+
+	git pull origin master
+
+** Vérifier que la classe créée par B est bien présente via Eclipse.
+- B :
+** Attendre le push de A, puis récupérer les modifications de A sur le B-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
+
+	git pull origin master
+
+** Vérifier que la classe créée par A est bien présente via Eclipse.
+
+=== Les branches locales
+La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
+
+A :
+
+Dans A-project, créer la branche :
+
+	git branch story1
+
+Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story1, nous nous trouvons toujours dans master.
+Il faut donc ensuite informer git que l'on travaille à présent dans la branche story1 :
+
+	git checkout story1
+
+Relancer git branch pour vérifier que story1 est maintenant la branche courante.
+
+Maintenant, commencer le développement :
+* Créer une nouvelle classe appelée StoryOneService;
+* commit ;
+* Effectuer des modifications sur cette classe ;
+* commit ;
+* Effectuer d'autres modifications ;
+* Commit.
+
+Le développement est maintenant terminé. Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
+
+	git checkout master
+
+On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+Nous allons à présent répercuter les changements effectués dans la branche story1 sur la master :
+
+	git merge --no-ff story1
+
+Cette commande va créer un nouveau commit résultant du report des développments de story1 sur master.
+L'option --no-ff
+Par défaut, git merge story1 va prendre tous les commits individuels de la branche story1 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story1.
+
+Il ne reste plus qu'à effectuer le push.
+
+
+B :
+
+Dans A-project, créer la branche :
+
+	git branch story2
+
+
+Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story2, nous nous trouvons toujours dans master.
+Il faut donc ensuite informer git que l'on travaille à présent dans la branche story2 :
+
+	git checkout story2
+
+Relancer git branch pour vérifier que story2 est maintenant la branche courante.
+
+* Maintenant, commencer le développement :
+* Créer une nouvelle classe appelée StoryTwoService;
+* commit ;
+* Effectuer des modifications sur cette classe ;
+* commit ;
+* Effectuer d'autres modifications ;
+* Commit.
+
+Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
+
+	git checkout master
+
+On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+
+Avant de répercuter les changements effectués dans la branche story2 sur master, il faut mettre à jour master pour récupérer les changements des autres développeurs.
+Attendre que A ait effectué son push.
+Puis récupérer ses modifications avec un pull.
+
+Nous pouvons à présent répercuter les changements effectués dans la branche story2 sur master :
+
+	git merge --no-ff story2
+
+Cette commande va créer un nouveau commit résultant du report des développments de story2 sur master.
+L'option --no-ff
+Par défaut, git merge story2 va prendre tous les commits individuels de la branche story2 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story2.
+
+Il ne reste plus qu'à effectuer le push.
+
+
+A : attendre le push de B récupérer les modifications de B avec un pull.
+
+Historique
+À présent que nous avons effectué plusieurs commit sur le projet, il serait pratique de pouvoir consulter l'historique. La commande de base est la suivante :
+
+	git log
+
+Le résultat nous donne beaucoup d'information sur les commits effectués. Pour un peu plus de clarté, on peut rajouter l'option --color :
+
+	git log --color
+
+Si l'on ne souhaite pas autant de détail sur les commits, on peut utiliser le format court avec l'option --oneline:
+
+	git log --color --oneline
+
+On peut aussi afficher l'historique sous forme de graphique en ajoutant l'option --graph :
+
+	git log --color --oneline --graph
+
+Sur le graphique, chaque commit est représenté par un *
+
+Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention explicitant quelle est la HEAD courante, il y a l'option --decorate :
+
+	git log --color --oneline --graph --decorate
+
+
+
+=== Résolution de conflit
+Nous allons à présent voir comment gérer un conflit. Nous travaillons toujours dans le projet A-project.
+
+A :
+
+* Renomme le champ field de CA en x.
+* Commit, puis push.
+
+B :
+
+* Renommer le champ field de CA en y.
+* Attendre que A ait effectué son push.
+* Effectuer un pull et git avertit que le pull écraserait les modifications de l'arbre de travail.
+L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, git fournit une commande très pratique : git stash pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
+B va donc effectuer
+
+	git stash
+
+Ses modifications étant à présent sauvegardées, il peut effectuer son pull.
+B effectue un pull.
+Il faut maintenant que B décide s'il vout appliquer ses modifications. Il va donc comparer ses modifications se trouvant à présent dans le stash à celle de la dernière révision récupérée. Par souci de praticité, cette comparaison va s'effectuer avec outil graphique de comparaison de fichier (meld dans notre cas) :
+
+	git difftool HEAD stash
+
+git difftool
+Est une commande qui peut prendre 1 ou 2 arguments. Dans notre cas, nous lui fournissons deux révisions à comparer. Pour chaque fichier différant dans les révisions, il va ouvrir un outil graphique de comparaison de fichier, parmi une liste dont il dispose en interne. Dans cette liste, il sélectionnera le premier qu'il trouve sur la machine.	Pour connaitre la liste complète, faire git difftool --tool-help.
+
+
+Dans le comparateur, B doit ensuite résoudre le conflit entre ses modifications (se trouvant à présent dans le stash) et celles des autres développeurs (à présent dans sa copie de travail). Pour distinguer les 2 versions, vérifier le chemin qui est affiché dans le comparateur de fichier. Du côté stash, le chemin est auto-généré.
+Quand tout est reporté, sauvegarder dans le comparateur (ctrl+s) puis faire un commit sur le fichier et un push.
+
+
+
+À présent, inverser les rôles (A devient B et vice-versa), et reprendre au début de cette section sur le même principe (renommage conflictuel).
+
+=== Les outils graphiques
+Il existe de nombreux outils graphiques pour utiliser git. Parmi eux :
+* git gui: outil graphique permettant d'interagir graphiquement avec git ;
+* gitk : visualiseur d'arbre de révision ;
+* Egit : plugin Eclipse directement intégré depuis la dernière version d'eclipse (kepler) ;
+* Jgit : plugin Eclipse.
+Vous pouvez maintenant tester un ou plusieurs de ces outils graphiques pour effectuer quelques opérations similaires à celles effectuées dans ce tutoriel et choisir celui que vous préférez.
+
+=== Aller plus loin
+Voici un liste de liens très pratiques pour approfondir vos connaissances :
+* Utiliser git sur un projet SVN : http://rapaul.com/2010/01/13/my-git-svn-workflow/
+* Un tutoriel pratique en ligne pour maîtriser le système de branche de git, très bien fait : http://pcottle.github.io/learnGitBranching/
+* Un modèle de flux de travail efficace sous git : http://nvie.com/posts/a-successful-git-branching-model/
+* Référence pour apprendre git en profondeur et en maitriser toute la puissance : http://git-scm.com/book
+
