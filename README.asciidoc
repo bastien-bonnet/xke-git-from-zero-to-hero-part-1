@@ -5,6 +5,9 @@ Pour ce hands-on il vous faut :
 
 - Eclipse Kepler ou un EDI sous lequel vous savez créer un projet Maven simple
 - git installé. Sous Ubuntu :
- sudo apt-get install git
+
+	sudo apt-get install git
+
 - un visualiseur de différence graphique, par exemple meld. Sous Ubuntu :
- sudo apt-get install meld
+
+	sudo apt-get install meld
