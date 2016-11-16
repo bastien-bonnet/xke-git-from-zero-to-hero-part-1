@@ -69,6 +69,7 @@ git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d
 [TIP]
 ====
 *Changer l'éditeur de texte par défaut*
+
 Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (cela annulera le commit) et définissez la variable EDITOR dans votre shell (exemple pour vim, vous pouvez remplacer par emacs, nano ou autre) :
 
 	export EDITOR=vim
@@ -81,12 +82,13 @@ Si c'est la première fois que vous utilisez git sur votre poste, après la comm
 === Les fichiers à ignorer
 Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
 
-.gitignore
+.\.gitignore
+[source,shell]
 ----
-	/target
-	/.settings
-	/.project
-	/.classpath
+/target
+/.settings
+/.project
+/.classpath
 ----
 
 
@@ -97,6 +99,7 @@ Maintenant, ajoutez le fichier .gitignore avec git add, effectuez le commit loca
 [TIP]
 ====
 *Soumettre l'ensemble des fichiers modifiés*
+
 Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vous pouvez utiliser l'option -a qui ajoute à la liste de commit tous les fichiers déjà versionnés qui ont été modifiés :
 
 	git commit -a
