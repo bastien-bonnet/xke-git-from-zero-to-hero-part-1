@@ -2,16 +2,6 @@
 
 == Environnement
 
-NOTE: Note
-
-TIP: Pro tip...
-
-IMPORTANT: Don't forget...
-
-WARNING: Watch out for...
-
-CAUTION: Ensure that...
-
 Pour ce hands-on il vous faut :
 
 - Eclipse Kepler ou un EDI sous lequel vous savez créer un projet Maven simple
@@ -59,10 +49,12 @@ Nous allons utiliser la commande git add pour sélectionner des fichiers pour le
 
 	git add src pom.xml
 
-Be Careful
+[WARNING]
+====
 La commande add de git fonctionne différemment de celle de SVN :
 svn add file.txt marque un fichier non versionné comme nouveau fichier à versionner. Il pourra alors être soumis (svn commit) ;
 git add file.txt marque un fichier comme candidat au prochain commit, qu'il soit déjà versionné ou pas. Au prochain git commit, il fera partie de la liste des fichiers à soumettre.
+====
 
 
 
