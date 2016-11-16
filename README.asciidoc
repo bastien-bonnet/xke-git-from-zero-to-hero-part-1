@@ -64,10 +64,11 @@ Lancez à nouveau la commande git status. On constate à présent que les fichie
 
 	git commit
 
+git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
+
 [TIP]
 ====
-git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
-Changer l'éditeur de texte par défaut
+*Changer l'éditeur de texte par défaut*
 Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (cela annulera le commit) et définissez la variable EDITOR dans votre shell (exemple pour vim, vous pouvez remplacer par emacs, nano ou autre) :
 
 	export EDITOR=vim
@@ -81,23 +82,26 @@ Si c'est la première fois que vous utilisez git sur votre poste, après la comm
 Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
 
 .gitignore
-
+----
 	/target
 	/.settings
 	/.project
 	/.classpath
-
+----
 
 
 Lancer à nouveau git status et constater que les fichiers ajoutés dans le fichier .gitignore ne sont plus mentionnés dans le message.
 
 Maintenant, ajoutez le fichier .gitignore avec git add, effectuez le commit local avec git commit.
-Soumettre l'ensemble des fichiers modifiés
+
+[TIP]
+====
+*Soumettre l'ensemble des fichiers modifiés*
 Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vous pouvez utiliser l'option -a qui ajoute à la liste de commit tous les fichiers déjà versionnés qui ont été modifiés :
 
 	git commit -a
 
-
+====
 
 === Associer un dépôt central au projet
 À présent, nous avons soumis nos modifications dans le dépôt local, mais il nous faut encore les « pousser » sur le dépôt central afin de les rendre accessibles aux autres collaborateurs.
