@@ -64,6 +64,8 @@ Lancez à nouveau la commande git status. On constate à présent que les fichie
 
 	git commit
 
+[TIP]
+====
 git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
 Changer l'éditeur de texte par défaut
 Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (cela annulera le commit) et définissez la variable EDITOR dans votre shell (exemple pour vim, vous pouvez remplacer par emacs, nano ou autre) :
@@ -71,8 +73,7 @@ Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (
 	export EDITOR=vim
 
 Vous pouvez ensuite reprendre votre commit.
-
-
+====
 
 Si c'est la première fois que vous utilisez git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre git (nom d'utilisateur, email).
 
