@@ -164,7 +164,7 @@ Importons ensuite le projet sous eclipse (Existing maven project).
 === Les branches locales
 La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
 
-.A
+.AA
 ****
 Dans A-project, créer la branche :
 
