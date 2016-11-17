@@ -165,7 +165,7 @@ Importons ensuite le projet sous eclipse (Existing maven project).
 La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
 
 .A
-====
+****
 Dans A-project, créer la branche :
 
 	git branch story1
@@ -176,7 +176,7 @@ Il faut donc ensuite informer git que l'on travaille à présent dans la branche
 	git checkout story1
 
 Relancer git branch pour vérifier que story1 est maintenant la branche courante.
-====
+****
 
 Maintenant, commencer le développement :
 * Créer une nouvelle classe appelée StoryOneService;
