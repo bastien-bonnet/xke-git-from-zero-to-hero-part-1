@@ -134,11 +134,11 @@ Retourner sur la page github du projet (même URL que le projet) et constater qu
 === Récupération d'un projet déjà existant
 Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central. NB : il faut lancer la commande à la racine de votre workspace eclipse.
 
-*A* ::
+- *A* :
 
 	git clone https://github.com/bastien-bonnet/NOM_COUPLE-B-project.git
 
-*B* ::
+- *B* :
 
 	git clone https://github.com/bastien-bonnet/NOM_COUPLE-A-project.git
 
@@ -146,26 +146,26 @@ Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le
 Importons ensuite le projet sous eclipse (Existing maven project).
 
 === Récupérer les modifications des autres développeurs
-- *A* : créer une nouvelle classe sur B-project, commit et push. piège
-- *B* : créer une nouvelle classe sur A-project, commit et push. piège
+- *A* : créer une nouvelle classe sur B-project, commit et push.
+- *B* : créer une nouvelle classe sur A-project, commit et push.
 - *A* :
-** Attendre le push de B, puis récupérer les modifications de B sur le A-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
+** Attendre le push de *B*, puis récupérer les modifications de *B* sur le A-project grâce à la commande `git pull`, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
 
 	git pull origin master
 
-** Vérifier que la classe créée par B est bien présente via Eclipse.
+** Vérifier que la classe créée par *B* est bien présente via Eclipse.
 - B :
-** Attendre le push de A, puis récupérer les modifications de A sur le B-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
+** Attendre le push de *A*, puis récupérer les modifications de *A* sur le B-project grâce à la commande `git pull`, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
 
 	git pull origin master
 
-** Vérifier que la classe créée par A est bien présente via Eclipse.
+** Vérifier que la classe créée par *A* est bien présente via Eclipse.
 
 === Les branches locales
 La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
 
-A :
-
+[A]
+====
 Dans A-project, créer la branche :
 
 	git branch story1
@@ -176,6 +176,7 @@ Il faut donc ensuite informer git que l'on travaille à présent dans la branche
 	git checkout story1
 
 Relancer git branch pour vérifier que story1 est maintenant la branche courante.
+====
 
 Maintenant, commencer le développement :
 * Créer une nouvelle classe appelée StoryOneService;
