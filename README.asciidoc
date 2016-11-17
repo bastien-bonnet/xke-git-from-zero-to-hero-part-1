@@ -164,19 +164,22 @@ Importons ensuite le projet sous eclipse (Existing maven project).
 === Les branches locales
 La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
 
-.AA
-****
+A ::
 Dans A-project, créer la branche :
-
++
+----
 	git branch story1
-
+----
++
 Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story1, nous nous trouvons toujours dans master.
 Il faut donc ensuite informer git que l'on travaille à présent dans la branche story1 :
-
++
+----
 	git checkout story1
-
+----
++
 Relancer git branch pour vérifier que story1 est maintenant la branche courante.
-****
+
 
 Maintenant, commencer le développement :
 * Créer une nouvelle classe appelée StoryOneService;
