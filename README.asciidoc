@@ -112,43 +112,42 @@ Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vo
 Pour bien visualiser que l'opération git commit ne concerne que le dépôt local, aller sur la page github du projet (même URL que le projet) et constater qu'aucun commit n'est encore présent sur le dépôt central.
 
 Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
-*A* : Lancer la commande :
+
+- *A* : Lancer la commande :
 
 	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-A-project
 
 
-B : Lancer la commmande :
+- *B* : Lancer la commmande :
 
 	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-B-project
 
 
-
 === Pousser ses modifications sur le dépôt central
-Maintenant que nous avons associé un dépôt central au projet, nous allons « pousser » nos modifications vers ce dépôt. Pour ce faire, il faut dire sur quel dépôt l'on souhaite « pousser » et quelle branche est concernée. Ici, il s'agit de la branche principale, toujours nommée master (équivalent du trunk de SVN) :
+Maintenant que nous avons associé un dépôt central au projet, nous allons « pousser » nos modifications vers ce dépôt. Pour ce faire, il faut dire sur quel dépôt l'on souhaite « pousser » et quelle branche est concernée. Ici, il s'agit de la branche principale, toujours nommée `master` (équivalent du `trunk` de SVN) :
 
 	git push origin master
-
 
 
 Retourner sur la page github du projet (même URL que le projet) et constater que les commits on bien été propagées sur le dépôt central.
 
 === Récupération d'un projet déjà existant
 Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central. NB : il faut lancer la commande à la racine de votre workspace eclipse.
-*A* :
+
+*A* ::
 
 	git clone https://github.com/bastien-bonnet/NOM_COUPLE-B-project.git
 
-B :
+*B* ::
 
 	git clone https://github.com/bastien-bonnet/NOM_COUPLE-A-project.git
-
 
 
 Importons ensuite le projet sous eclipse (Existing maven project).
 
 === Récupérer les modifications des autres développeurs
 - *A* : créer une nouvelle classe sur B-project, commit et push. piège
-- B : créer une nouvelle classe sur A-project, commit et push. piège
+- *B* : créer une nouvelle classe sur A-project, commit et push. piège
 - *A* :
 ** Attendre le push de B, puis récupérer les modifications de B sur le A-project grâce à la commande git pull, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
 
