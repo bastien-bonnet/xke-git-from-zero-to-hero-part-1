@@ -215,15 +215,16 @@ Il faut donc ensuite informer git que l'on travaille à présent dans la branche
 	git checkout story2
 
 Relancer git branch pour vérifier que story2 est maintenant la branche courante.
++
+Maintenant, commencer le développement :
 
-* Maintenant, commencer le développement :
 * Créer une nouvelle classe appelée StoryTwoService;
 * commit ;
 * Effectuer des modifications sur cette classe ;
 * commit ;
 * Effectuer d'autres modifications ;
 * Commit.
-
++
 Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
 
 	git checkout master
@@ -245,9 +246,9 @@ Par défaut, git merge story2 va prendre tous les commits individuels de la bran
 Il ne reste plus qu'à effectuer le push.
 
 
-A : attendre le push de B récupérer les modifications de B avec un pull.
+*A* : attendre le push de B récupérer les modifications de B avec un pull.
 
-Historique
+=== Historique
 À présent que nous avons effectué plusieurs commit sur le projet, il serait pratique de pouvoir consulter l'historique. La commande de base est la suivante :
 
 	git log
