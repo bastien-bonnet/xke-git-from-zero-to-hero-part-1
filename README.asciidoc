@@ -212,7 +212,7 @@ Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch san
 Il faut donc ensuite informer git que l'on travaille à présent dans la branche story2 :
 
 	git checkout story2
-
++
 Relancer git branch pour vérifier que story2 est maintenant la branche courante.
 +
 Maintenant, commencer le développement :
@@ -244,8 +244,8 @@ Par défaut, git merge story2 va prendre tous les commits individuels de la bran
 +
 Il ne reste plus qu'à effectuer le push.
 
-
 *A* : attendre le push de B récupérer les modifications de B avec un pull.
+
 
 === Historique
 À présent que nous avons effectué plusieurs commit sur le projet, il serait pratique de pouvoir consulter l'historique. La commande de base est la suivante :
@@ -271,16 +271,15 @@ Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention ex
 	git log --color --oneline --graph --decorate
 
 
-
 === Résolution de conflit
 Nous allons à présent voir comment gérer un conflit. Nous travaillons toujours dans le projet A-project.
 
-A :
+*A* :
 
 * Renomme le champ field de CA en x.
 * Commit, puis push.
 
-B :
+*B* :
 
 * Renommer le champ field de CA en y.
 * Attendre que A ait effectué son push.
@@ -309,6 +308,7 @@ Quand tout est reporté, sauvegarder dans le comparateur (ctrl+s) puis faire un 
 
 === Les outils graphiques
 Il existe de nombreux outils graphiques pour utiliser git. Parmi eux :
+
 * git gui: outil graphique permettant d'interagir graphiquement avec git ;
 * gitk : visualiseur d'arbre de révision ;
 * Egit : plugin Eclipse directement intégré depuis la dernière version d'eclipse (kepler) ;
@@ -317,8 +317,32 @@ Vous pouvez maintenant tester un ou plusieurs de ces outils graphiques pour effe
 
 === Aller plus loin
 Voici un liste de liens très pratiques pour approfondir vos connaissances :
-* Utiliser git sur un projet SVN : http://rapaul.com/2010/01/13/my-git-svn-workflow/
+
 * Un tutoriel pratique en ligne pour maîtriser le système de branche de git, très bien fait : http://pcottle.github.io/learnGitBranching/
 * Un modèle de flux de travail efficace sous git : http://nvie.com/posts/a-successful-git-branching-model/
 * Référence pour apprendre git en profondeur et en maitriser toute la puissance : http://git-scm.com/book
+* Utiliser git sur un projet SVN : http://rapaul.com/2010/01/13/my-git-svn-workflow/
 
+== Conclusion
+
+Après avoir effectué ce tutoriel pratique, certains avantages de git apparaissent :
+
+* *Moins d'erreurs de commit* : on commit d'abord dans son dépôt local, ce qui permet de revenir en arrière en cas d'erreur ;
+* *La gestion des branches* est très facile, et on peut en créer autant qu'on veut pour travailler en local, puis sélectionner la manière dont le résultat final est intégré à la branche principale ;
+* *La stash* permet de mettre ses modifications temporairement de côté sans les perdre.
+
+D'autres avantages de git :
+
+* *git versionne le contenu et non les fichiers (contrairement à SVN)*. Cela a plusieurs avantages :
+
+** Si un fichier a été renommé/déplacé sans que git n'en soit averti, il s'en apercevra tout de même, car il verra que le contenu a changé de place ;
+** Si un fichier a été renommé/déplacé, son historique ne s'arrêtera pas au moment où il l'a été (contrairement à SVN) ;
+** Il est possible de commit des modifications dont la granularité est inférieure à celle d'un fichier : si plusieurs modifications on été faites dans un fichier, il est possible de ne commit qu'un sous-ensemble d'entre elles ;
+
+* *Manipulation de l'historique* : tous les commits qui n'ont pas été envoyés sur le dépôt central peuvent être manipulés (fusion, annulation, réordonnancement) ;
+* *Git est beaucoup plus rapide que SVN* car la plupart des opérations sont locales (historique, commit, merge, branches…) ;
+* *La création de branches est très simple et peu coûteuse* :
++
+Avec SVN, créer une branche implique une copie complète des fichiers du projet dans un second dossier, ce qui peut prendre plusieurs minutes ; de plus la branche est visible par tout le monde.
++
+Avec git, créer une branche est fait en une fraction de seconde, car une branche est simplement un pointeur vers un commit (aucune copie de fichiers), la branche est locale, et n'es poussée sur le dépôt central que si le développeur le décide.
