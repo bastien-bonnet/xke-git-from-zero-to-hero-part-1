@@ -185,20 +185,20 @@ Maintenant, commencer le développement :
 * commit ;
 * Effectuer d'autres modifications ;
 * Commit.
-
++
 Le développement est maintenant terminé. Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
 
 	git checkout master
-
++
 On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
 Nous allons à présent répercuter les changements effectués dans la branche story1 sur la master :
 
 	git merge --no-ff story1
-
++
 Cette commande va créer un nouveau commit résultant du report des développments de story1 sur master.
 L'option --no-ff
 Par défaut, git merge story1 va prendre tous les commits individuels de la branche story1 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story1.
-
++
 Il ne reste plus qu'à effectuer le push.
 
 
@@ -207,8 +207,7 @@ Il ne reste plus qu'à effectuer le push.
 Dans A-project, créer la branche :
 
 	git branch story2
-
-
++
 Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story2, nous nous trouvons toujours dans master.
 Il faut donc ensuite informer git que l'on travaille à présent dans la branche story2 :
 
@@ -228,21 +227,21 @@ Maintenant, commencer le développement :
 Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
 
 	git checkout master
-
++
 On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
-
++
 Avant de répercuter les changements effectués dans la branche story2 sur master, il faut mettre à jour master pour récupérer les changements des autres développeurs.
 Attendre que A ait effectué son push.
 Puis récupérer ses modifications avec un pull.
-
++
 Nous pouvons à présent répercuter les changements effectués dans la branche story2 sur master :
 
 	git merge --no-ff story2
-
++
 Cette commande va créer un nouveau commit résultant du report des développments de story2 sur master.
 L'option --no-ff
 Par défaut, git merge story2 va prendre tous les commits individuels de la branche story2 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story2.
-
++
 Il ne reste plus qu'à effectuer le push.
 
 
