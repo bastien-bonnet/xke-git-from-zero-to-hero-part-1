@@ -1,4 +1,5 @@
 = Git niveau 1
+:Author: Bastien Bonnet, Christophe Pelé, Alexandre Dergham
 
 == Environnement
 
