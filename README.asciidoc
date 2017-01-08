@@ -7,16 +7,18 @@
 
 Pour ce hands-on il vous faut :
 
-- Eclipse, IntelliJ ou un EDI sous lequel vous pouvez créer un projet Maven simple. Aucune connaissance de Java et Maven ne sera requise, le code sert seulement de support à l'activité
-- Git installé. Sous Ubuntu :
-
-	sudo apt-get install git
-
-- un visualiseur de différence graphique, par exemple meld. Sous Ubuntu :
+* Eclipse, IntelliJ ou un EDI sous lequel vous pouvez créer un projet Maven simple. Aucune connaissance de Java et Maven ne sera requise, le code sert seulement de support à l'activité
+* un compte Github
+* Git installé
+* un visualiseur de différence graphique, par exemple Meld. Tout autre outil apparaissant dans la liste `git difftool --tool-help` fera aussi l'affaire. Pour Meld :
+** sous Ubuntu :
 
 	sudo apt-get install meld
 
-- un compte Github
+** sous Mac OS :
+
+	brew install meld
+
 
 == Format
 
