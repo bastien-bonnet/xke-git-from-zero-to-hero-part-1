@@ -279,7 +279,7 @@ Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention ex
 
 
 === Résolution de conflit
-Nous allons à présent voir comment gérer un conflit. Nous travaillons toujours dans le projet A-project.
+Nous allons à présent voir comment gérer un conflit. Nous travaillons toujours dans le projet *A-project*.
 
 *A* :
 
@@ -298,9 +298,9 @@ B va donc effectuer
 
 Ses modifications étant à présent sauvegardées, il peut effectuer son pull.
 B effectue un pull.
-Il faut maintenant que B décide s'il vout appliquer ses modifications. Il va donc comparer ses modifications se trouvant à présent dans le stash à celle de la dernière révision récupérée. Par souci de praticité, cette comparaison va s'effectuer avec outil graphique de comparaison de fichier (meld dans notre cas) :
+Il faut maintenant que B décide s'il vout appliquer ses modifications. Il va donc comparer ses modifications se trouvant à présent dans le stash à celle de la dernière révision récupérée. Par souci de praticité, cette comparaison va s'effectuer avec outil graphique de comparaison de fichier (Meld dans notre cas) :
 
-	git difftool HEAD stash
+	git difftool --tool=meld HEAD stash
 
 `git difftool` est une commande qui peut prendre 1 ou 2 arguments. Dans notre cas, nous lui fournissons deux révisions à comparer. Pour chaque fichier différant dans les révisions, il va ouvrir un outil graphique de comparaison de fichier, parmi une liste dont il dispose en interne. Dans cette liste, il sélectionnera le premier qu'il trouve sur la machine.	Pour connaitre la liste complète, faire `git difftool --tool-help`.
 
