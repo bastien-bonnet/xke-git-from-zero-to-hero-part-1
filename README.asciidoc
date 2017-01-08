@@ -1,11 +1,11 @@
-= Git niveau 1
+= Git from zero to hero : 1. retour sur les bases
 :Author: Bastien Bonnet, Christophe Pelé, Alexandre Dergham
 
 == Environnement
 
 Pour ce hands-on il vous faut :
 
-- Eclipse Kepler ou un EDI sous lequel vous savez créer un projet Maven simple
+- Eclipse, IntelliJ ou un EDI sous lequel vous pouvez créer un projet Maven simple. Aucune connaissance de Java et Maven ne sera requise, le code sert seulement de support à l'activité
 - git installé. Sous Ubuntu :
 
 	sudo apt-get install git
@@ -13,6 +13,8 @@ Pour ce hands-on il vous faut :
 - un visualiseur de différence graphique, par exemple meld. Sous Ubuntu :
 
 	sudo apt-get install meld
+
+- un compte Github
 
 == Format
 
@@ -22,22 +24,21 @@ Les couples seront nommés de la manière suivante : couple *un*, couple *deux*,
 
 Au sein d'un couple, l'un des deux développeurs s'appellera *A* et l'autre *B*. La plupart des consignes seront précédées d'un de ces deux alias. Cela signifie que seul le développeur concerné effectue l'action demandée.
 
-Chaque couple disposera de deux dépôts initialement vides (c'est-à-dire sans aucun commit), correspondant à deux projets (*A-project* et *B-project*). Les URL des dépôts sont formés de la manière suivante :
-
-- A-project : https://github.com/bastien-bonnet/NOM_COUPLE-A-project
-- B-project : https://github.com/bastien-bonnet/NOM_COUPLE-B-project
+L'ensemble de l'atelier s'articulera autour de deux projets, l'un initié par *A*, nommé *A-project*, l'autre initié par *B*, nommé *B-project*.
 
 == Consignes
 
 === Création du projet
 Créer un project Maven simple (vide).
+
 Dans Eclipse : File > new > Maven Project puis cocher Create simple project (skip archetype selection).
 
 - *A* : artifact Id : « A-project ». Créer une classe CA avec un attribut de votre choix nommé field.
 - *B* : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
 
 === Initialisation du dépôt local
-Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande ls pour vérifier. Le résultat doit contenir src et pom.xml.
+Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande `ls` pour vérifier. Le résultat doit contenir `src` et +pom.xml+.
+
 Initialiser le dépôt git :
 
 	git init
@@ -108,20 +109,23 @@ Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vo
 ====
 
 === Associer un dépôt central au projet
-À présent, nous avons soumis nos modifications dans le dépôt local, mais il nous faut encore les « pousser » sur le dépôt central afin de les rendre accessibles aux autres collaborateurs.
-
-Pour bien visualiser que l'opération git commit ne concerne que le dépôt local, aller sur la page github du projet (même URL que le projet) et constater qu'aucun commit n'est encore présent sur le dépôt central.
+À présent, nous avons soumis nos modifications dans le dépôt local, mais il nous faut encore les « pousser » sur un dépôt central afin de les rendre accessibles aux autres collaborateurs.
 
 Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
 
-- *A* : Lancer la commande :
+* *A* :
+** Créer le dépôt central sur Github, dans votre espace, en le nommant *A-project*
+** Associer ce dépôt central au projet local :
 
-	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-A-project
+
+	git remote add origin https://github.com/COMPTE-DE-A/A-project
 
 
-- *B* : Lancer la commmande :
+* *B* :
+** Créer le dépôt central sur Github, dans votre espace, en le nommant *B-project*
+** Associer ce dépôt central au projet local :
 
-	git remote add origin https://github.com/bastien-bonnet/NOM_COUPLE-B-project
+	git remote add origin https://github.com//COMPTE-DE-B/B-project
 
 
 === Pousser ses modifications sur le dépôt central
@@ -137,11 +141,11 @@ Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le
 
 - *A* :
 
-	git clone https://github.com/bastien-bonnet/NOM_COUPLE-B-project.git
+	git clone https://github.com/COMPTE-DE-B/B-project
 
 - *B* :
 
-	git clone https://github.com/bastien-bonnet/NOM_COUPLE-A-project.git
+	git clone https://github.com/COMPTE-DE-A/A-project
 
 
 Importons ensuite le projet sous eclipse (Existing maven project).
