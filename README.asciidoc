@@ -179,12 +179,12 @@ Dans A-project, créer la branche :
 
 	git branch story1
 +
-Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche `story1`, nous nous trouvons toujours dans master.
+Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche `story1`, nous nous trouvons toujours dans `master`.
 Il faut donc ensuite informer Git que l'on travaille à présent dans la branche `story1` :
 
 	git checkout story1
 +
-Relancer git branch pour vérifier que story1 est maintenant la branche courante.
+Relancer `git branch` pour vérifier que `story1` est maintenant la branche courante.
 +
 Maintenant, commencer le développement :
 
@@ -195,17 +195,17 @@ Maintenant, commencer le développement :
 * Effectuer d'autres modifications ;
 * Commit.
 +
-Le développement est maintenant terminé. Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
+Le développement est maintenant terminé. Nous allons donc reporter nos développement sur la branche principale, `master`. Pour ce faire, on se place d'abord dans la branche `master` :
 
 	git checkout master
 +
-On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé `master`.
 Nous allons à présent répercuter les changements effectués dans la branche `story1` sur la branche `master` :
 
 	git merge --no-ff story1
 +
 Cette commande va créer un nouveau commit résultant du report des développments de `story1` sur `master`.
-Par défaut, git merge story1 va prendre tous les commits individuels de la branche story1 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story1.
+Par défaut, `git merge story1` va prendre tous les commits individuels de la branche `story1` et les appliquer un par un sur la copie de travail dans la branche courante, qui dans notre cas est `master`. L'option `--no-ff` permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur `story1`.
 +
 Il ne reste plus qu'à effectuer le push.
 
@@ -221,7 +221,7 @@ Il faut donc ensuite informer Git que l'on travaille à présent dans la branche
 
 	git checkout story2
 +
-Relancer git branch pour vérifier que story2 est maintenant la branche courante.
+Relancer `git branch` pour vérifier que story2 est maintenant la branche courante.
 +
 Maintenant, commencer le développement :
 
@@ -232,13 +232,13 @@ Maintenant, commencer le développement :
 * Effectuer d'autres modifications ;
 * Commit.
 +
-Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, `master`. Pour ce faire, on se place d'abord dans la branche master :
+Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, `master`. Pour ce faire, on se place d'abord dans la branche `master` :
 
 	git checkout master
 +
-On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé `master`.
 +
-Avant de répercuter les changements effectués dans la branche story2 sur master, il faut mettre à jour master pour récupérer les changements des autres développeurs.
+Avant de répercuter les changements effectués dans la branche `story2` sur `master`, il faut mettre à jour `master` pour récupérer les changements des autres développeurs.
 Attendre que A ait effectué son push.
 Puis récupérer ses modifications avec un pull.
 +
@@ -247,7 +247,7 @@ Nous pouvons à présent répercuter les changements effectués dans la branche 
 	git merge --no-ff story2
 +
 Cette commande va créer un nouveau commit résultant du report des développments de `story2` sur `master`.
-Par défaut, git merge story2 va prendre tous les commits individuels de la branche `story2` et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est `master`). L'option `--no-ff` permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur `story2`.
+Par défaut, `git merge story2` va prendre tous les commits individuels de la branche `story2` et les appliquer un par un sur la copie de travail dans (la branche courante, qui dans notre cas est `master`). L'option `--no-ff` permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur `story2`.
 +
 Il ne reste plus qu'à effectuer le push.
 
@@ -271,9 +271,9 @@ On peut aussi afficher l'historique sous forme de graphique en ajoutant l'option
 
 	git log --color --oneline --graph
 
-Sur le graphique, chaque commit est représenté par un *
+Sur le graphique, chaque commit est représenté par un `*`
 
-Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention explicitant quelle est la HEAD courante, il y a l'option `--decorate` :
+Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention explicitant quelle est la `HEAD` courante, il y a l'option `--decorate` :
 
 	git log --color --oneline --graph --decorate
 
@@ -295,20 +295,17 @@ L'une des manières de résoudre un tel conflit est de stocker ses modifications
 B va donc effectuer
 
 	git stash
-
++
 Ses modifications étant à présent sauvegardées, il peut effectuer son pull.
 B effectue un pull.
 Il faut maintenant que B décide s'il vout appliquer ses modifications. Il va donc comparer ses modifications se trouvant à présent dans le stash à celle de la dernière révision récupérée. Par souci de praticité, cette comparaison va s'effectuer avec outil graphique de comparaison de fichier (Meld dans notre cas) :
 
 	git difftool --tool=meld HEAD stash
-
++
 `git difftool` est une commande qui peut prendre 1 ou 2 arguments. Dans notre cas, nous lui fournissons deux révisions à comparer. Pour chaque fichier différant dans les révisions, il va ouvrir un outil graphique de comparaison de fichier, parmi une liste dont il dispose en interne. Dans cette liste, il sélectionnera le premier qu'il trouve sur la machine.	Pour connaitre la liste complète, faire `git difftool --tool-help`.
-
-
++
 Dans le comparateur, B doit ensuite résoudre le conflit entre ses modifications (se trouvant à présent dans le stash) et celles des autres développeurs (à présent dans sa copie de travail). Pour distinguer les 2 versions, vérifier le chemin qui est affiché dans le comparateur de fichier. Du côté stash, le chemin est auto-généré.
 Quand tout est reporté, sauvegarder dans le comparateur (ctrl+s) puis faire un commit sur le fichier et un push.
-
-
 
 À présent, inverser les rôles (A devient B et vice-versa), et reprendre au début de cette section sur le même principe (renommage conflictuel).
 
