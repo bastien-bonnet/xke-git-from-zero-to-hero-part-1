@@ -1,5 +1,7 @@
 = Git from zero to hero : 1. retour sur les bases
 :Author: Bastien Bonnet, Christophe Pelé, Alexandre Dergham
+:toc:
+:numbered: 1
 
 == Environnement
 
