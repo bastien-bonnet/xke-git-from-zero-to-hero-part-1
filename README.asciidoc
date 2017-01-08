@@ -35,10 +35,10 @@ L'ensemble de l'atelier s'articulera autour de deux projets, l'un initié par *A
 === Création du projet
 Créer un project Maven simple (vide).
 
-Dans Eclipse : File > new > Maven Project puis cocher Create simple project (skip archetype selection).
+Dans Eclipse : `File` > `new` > `Maven Project` puis cocher `Create simple project (skip archetype selection)`.
 
-- *A* : artifact Id : « A-project ». Créer une classe CA avec un attribut de votre choix nommé field.
-- *B* : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
+- *A* : artifact Id : « A-project ». Créer une classe nommée `CA` avec un attribut de votre choix nommé field.
+- *B* : artifact Id : « B-project ». Créer une classe nommée `CB` avec un attribut de votre choix.
 
 === Initialisation du dépôt local
 Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande `ls` pour vérifier. Le résultat doit contenir `src` et `pom.xml`.
