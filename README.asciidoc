@@ -8,7 +8,7 @@
 Pour ce hands-on il vous faut :
 
 - Eclipse, IntelliJ ou un EDI sous lequel vous pouvez créer un projet Maven simple. Aucune connaissance de Java et Maven ne sera requise, le code sert seulement de support à l'activité
-- git installé. Sous Ubuntu :
+- Git installé. Sous Ubuntu :
 
 	sudo apt-get install git
 
@@ -41,7 +41,7 @@ Dans Eclipse : File > new > Maven Project puis cocher Create simple project (ski
 === Initialisation du dépôt local
 Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande `ls` pour vérifier. Le résultat doit contenir `src` et +pom.xml+.
 
-Initialiser le dépôt git :
+Initialiser le dépôt Git :
 
 	git init
 
@@ -55,7 +55,7 @@ Nous allons utiliser la commande git add pour sélectionner des fichiers pour le
 
 [WARNING]
 ====
-La commande add de git fonctionne différemment de celle de SVN :
+La commande add de Git fonctionne différemment de celle de SVN :
 svn add file.txt marque un fichier non versionné comme nouveau fichier à versionner. Il pourra alors être soumis (svn commit) ;
 git add file.txt marque un fichier comme candidat au prochain commit, qu'il soit déjà versionné ou pas. Au prochain git commit, il fera partie de la liste des fichiers à soumettre.
 ====
@@ -68,7 +68,7 @@ Lancez à nouveau la commande git status. On constate à présent que les fichie
 
 	git commit
 
-git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
+Git, tout comme SVN, ouvre alors votre éditeur par défaut pour vous demander d'entrer un message de commit.
 
 [TIP]
 ====
@@ -81,10 +81,10 @@ Si l'éditeur par défaut ne vous convient pas, quittez sans mettre de message (
 Vous pouvez ensuite reprendre votre commit.
 ====
 
-Si c'est la première fois que vous utilisez git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre git (nom d'utilisateur, email).
+Si c'est la première fois que vous utilisez Git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre Git (nom d'utilisateur, email).
 
 === Les fichiers à ignorer
-Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
+Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à Git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
 
 .gitignore
 [source,shell]
@@ -113,7 +113,7 @@ Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vo
 === Associer un dépôt central au projet
 À présent, nous avons soumis nos modifications dans le dépôt local, mais il nous faut encore les « pousser » sur un dépôt central afin de les rendre accessibles aux autres collaborateurs.
 
-Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
+Nous donc maintenant associer un dépôt central au projet, que nous appellerons « origin », ce qui est une convention pour désigner ce dépôt lorsque l'on travaille avec Git. Ce nom « origin » sera utilisé chaque fois que nous voudrons interagir avec le dépôt central.
 
 * *A* :
 ** Créer le dépôt central sur Github, dans votre espace, en le nommant *A-project*
@@ -178,7 +178,7 @@ Dans A-project, créer la branche :
 	git branch story1
 +
 Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story1, nous nous trouvons toujours dans master.
-Il faut donc ensuite informer git que l'on travaille à présent dans la branche story1 :
+Il faut donc ensuite informer Git que l'on travaille à présent dans la branche story1 :
 
 	git checkout story1
 +
@@ -216,7 +216,7 @@ Dans A-project, créer la branche :
 	git branch story2
 +
 Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story2, nous nous trouvons toujours dans master.
-Il faut donc ensuite informer git que l'on travaille à présent dans la branche story2 :
+Il faut donc ensuite informer Git que l'on travaille à présent dans la branche story2 :
 
 	git checkout story2
 +
@@ -290,8 +290,8 @@ Nous allons à présent voir comment gérer un conflit. Nous travaillons toujour
 
 * Renommer le champ field de CA en y.
 * Attendre que A ait effectué son push.
-* Effectuer un pull et git avertit que le pull écraserait les modifications de l'arbre de travail.
-L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, git fournit une commande très pratique : git stash pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
+* Effectuer un pull et Git avertit que le pull écraserait les modifications de l'arbre de travail.
+L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, Git fournit une commande très pratique : git stash pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
 B va donc effectuer
 
 	git stash
@@ -314,9 +314,9 @@ Quand tout est reporté, sauvegarder dans le comparateur (ctrl+s) puis faire un 
 À présent, inverser les rôles (A devient B et vice-versa), et reprendre au début de cette section sur le même principe (renommage conflictuel).
 
 === Les outils graphiques
-Il existe de nombreux outils graphiques pour utiliser git. Parmi eux :
+Il existe de nombreux outils graphiques pour utiliser Git. Parmi eux :
 
-* git gui: outil graphique permettant d'interagir graphiquement avec git ;
+* Git gui: outil graphique permettant d'interagir graphiquement avec Git ;
 * gitk : visualiseur d'arbre de révision ;
 * Egit : plugin Eclipse directement intégré depuis la dernière version d'eclipse (kepler) ;
 * Jgit : plugin Eclipse.
@@ -325,24 +325,24 @@ Vous pouvez maintenant tester un ou plusieurs de ces outils graphiques pour effe
 === Aller plus loin
 Voici un liste de liens très pratiques pour approfondir vos connaissances :
 
-* Un tutoriel pratique en ligne pour maîtriser le système de branche de git, très bien fait : http://pcottle.github.io/learnGitBranching/
-* Un modèle de flux de travail efficace sous git : http://nvie.com/posts/a-successful-git-branching-model/
-* Référence pour apprendre git en profondeur et en maitriser toute la puissance : http://git-scm.com/book
-* Utiliser git sur un projet SVN : http://rapaul.com/2010/01/13/my-git-svn-workflow/
+* Un tutoriel pratique en ligne pour maîtriser le système de branche de Git, très bien fait : http://pcottle.github.io/learnGitBranching/
+* Un modèle de flux de travail efficace sous Git : http://nvie.com/posts/a-successful-git-branching-model/
+* Référence pour apprendre Git en profondeur et en maitriser toute la puissance : http://git-scm.com/book
+* Utiliser Git sur un projet SVN : http://rapaul.com/2010/01/13/my-git-svn-workflow/
 
 == Conclusion
 
-Après avoir effectué ce tutoriel pratique, certains avantages de git apparaissent :
+Après avoir effectué ce tutoriel pratique, certains avantages de Git apparaissent :
 
 * *Moins d'erreurs de commit* : on commit d'abord dans son dépôt local, ce qui permet de revenir en arrière en cas d'erreur ;
 * *La gestion des branches* est très facile, et on peut en créer autant qu'on veut pour travailler en local, puis sélectionner la manière dont le résultat final est intégré à la branche principale ;
 * *La stash* permet de mettre ses modifications temporairement de côté sans les perdre.
 
-D'autres avantages de git :
+D'autres avantages de Git :
 
 * *git versionne le contenu et non les fichiers (contrairement à SVN)*. Cela a plusieurs avantages :
 
-** Si un fichier a été renommé/déplacé sans que git n'en soit averti, il s'en apercevra tout de même, car il verra que le contenu a changé de place ;
+** Si un fichier a été renommé/déplacé sans que Git n'en soit averti, il s'en apercevra tout de même, car il verra que le contenu a changé de place ;
 ** Si un fichier a été renommé/déplacé, son historique ne s'arrêtera pas au moment où il l'a été (contrairement à SVN) ;
 ** Il est possible de commit des modifications dont la granularité est inférieure à celle d'un fichier : si plusieurs modifications on été faites dans un fichier, il est possible de ne commit qu'un sous-ensemble d'entre elles ;
 
@@ -352,4 +352,4 @@ D'autres avantages de git :
 +
 Avec SVN, créer une branche implique une copie complète des fichiers du projet dans un second dossier, ce qui peut prendre plusieurs minutes ; de plus la branche est visible par tout le monde.
 +
-Avec git, créer une branche est fait en une fraction de seconde, car une branche est simplement un pointeur vers un commit (aucune copie de fichiers), la branche est locale, et n'es poussée sur le dépôt central que si le développeur le décide.
+Avec Git, créer une branche est fait en une fraction de seconde, car une branche est simplement un pointeur vers un commit (aucune copie de fichiers), la branche est locale, et n'es poussée sur le dépôt central que si le développeur le décide.
