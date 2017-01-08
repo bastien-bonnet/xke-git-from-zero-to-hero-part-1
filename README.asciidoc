@@ -37,7 +37,7 @@ Créer un project Maven simple (vide).
 
 Dans Eclipse : `File` > `new` > `Maven Project` puis cocher `Create simple project (skip archetype selection)`.
 
-- *A* : artifact Id : « A-project ». Créer une classe nommée `CA` avec un attribut de votre choix nommé field.
+- *A* : artifact Id : « A-project ». Créer une classe nommée `CA` avec un attribut de votre choix nommé `field`.
 - *B* : artifact Id : « B-project ». Créer une classe nommée `CB` avec un attribut de votre choix.
 
 === Initialisation du dépôt local
@@ -86,7 +86,7 @@ Vous pouvez ensuite reprendre votre commit.
 Si c'est la première fois que vous utilisez Git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre Git (nom d'utilisateur, email).
 
 === Les fichiers à ignorer
-Lancer à nouveau `git status`. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à Git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé `.gitignore`, et de lui spécifier les fichiers à ignorer :
+Lancer à nouveau `git status`. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, .idea, etc.). Pour dire à Git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé `.gitignore`, et de lui spécifier les fichiers à ignorer (mettez ceux que vous avez pu observer dans votre répertoire) :
 
 [source,shell]
 ----
@@ -94,10 +94,11 @@ Lancer à nouveau `git status`. On constate que plus rien n'est à commit. Par c
 /.settings
 /.project
 /.classpath
+/.idea
 ----
 
 
-Lancer à nouveau git status et constater que les fichiers ajoutés dans le fichier .gitignore ne sont plus mentionnés dans le message.
+Lancer à nouveau `git status` et constater que les fichiers ajoutés dans le fichier `.gitignore` ne sont plus mentionnés dans le message.
 
 Maintenant, ajoutez le fichier `.gitignore` avec `git add`, effectuez le commit local avec `git commit`.
 
@@ -282,12 +283,12 @@ Nous allons à présent voir comment gérer un conflit. Nous travaillons toujour
 
 *A* :
 
-* Renomme le champ field de CA en x.
+* Renomme le champ `field` de `CA` en `x`.
 * Commit, puis push.
 
 *B* :
 
-* Renommer le champ field de CA en y.
+* Renommer le champ `field` de `CA` en `y`.
 * Attendre que A ait effectué son push.
 * Effectuer un pull et Git avertit que le pull écraserait les modifications de l'arbre de travail.
 L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, Git fournit une commande très pratique : `git stash` pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
