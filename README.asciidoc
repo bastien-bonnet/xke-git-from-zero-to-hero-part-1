@@ -41,7 +41,7 @@ Dans Eclipse : File > new > Maven Project puis cocher Create simple project (ski
 - *B* : artifact Id : « B-project ». Créer une classe CB avec un attribut de votre choix.
 
 === Initialisation du dépôt local
-Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande `ls` pour vérifier. Le résultat doit contenir `src` et +pom.xml+.
+Ouvrir un terminal dans le dossier racine de votre projet. Lancer la commande `ls` pour vérifier. Le résultat doit contenir `src` et `pom.xml`.
 
 Initialiser le dépôt Git :
 
@@ -58,8 +58,8 @@ Nous allons utiliser la commande git add pour sélectionner des fichiers pour le
 [WARNING]
 ====
 La commande add de Git fonctionne différemment de celle de SVN :
-svn add file.txt marque un fichier non versionné comme nouveau fichier à versionner. Il pourra alors être soumis (svn commit) ;
-git add file.txt marque un fichier comme candidat au prochain commit, qu'il soit déjà versionné ou pas. Au prochain git commit, il fera partie de la liste des fichiers à soumettre.
+`svn add file.txt` marque un fichier non versionné comme nouveau fichier à versionner. Il pourra alors être soumis (svn commit) ;
+`git add file.txt` marque un fichier comme candidat au prochain commit, qu'il soit déjà versionné ou pas. Au prochain `git commit`, il fera partie de la liste des fichiers à soumettre.
 ====
 
 
@@ -86,7 +86,7 @@ Vous pouvez ensuite reprendre votre commit.
 Si c'est la première fois que vous utilisez Git sur votre poste, après la commande de commit un message s'affichera. Ce message vous donne les instructions à suivre pour configurer globalement votre Git (nom d'utilisateur, email).
 
 === Les fichiers à ignorer
-Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à Git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé .gitignore, et de lui spécifier les fichiers à ignorer :
+Lancer à nouveau git status. On constate que plus rien n'est à commit. Par contre, nous voyons toujours le message qui nous avertit que certains fichiers ne sont pas versionnés (comme target, .settings, etc.). Pour dire à Git de ne plus s'occuper de ces fichiers, il suffit de créer (ou modifier s'il exister déjà) un fichier appelé `.gitignore`, et de lui spécifier les fichiers à ignorer :
 
 .gitignore
 [source,shell]
@@ -100,13 +100,13 @@ Lancer à nouveau git status. On constate que plus rien n'est à commit. Par con
 
 Lancer à nouveau git status et constater que les fichiers ajoutés dans le fichier .gitignore ne sont plus mentionnés dans le message.
 
-Maintenant, ajoutez le fichier .gitignore avec git add, effectuez le commit local avec git commit.
+Maintenant, ajoutez le fichier `.gitignore` avec `git add`, effectuez le commit local avec `git commit`.
 
 [TIP]
 ====
 *Soumettre l'ensemble des fichiers modifiés*
 
-Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vous pouvez utiliser l'option -a qui ajoute à la liste de commit tous les fichiers déjà versionnés qui ont été modifiés :
+Si vous ne voulez pas sélectionner un par un tous les fichiers à soumettre, vous pouvez utiliser l'option `-a` qui ajoute à la liste de commit tous les fichiers déjà versionnés qui ont été modifiés :
 
 	git commit -a
 
@@ -141,7 +141,7 @@ Maintenant que nous avons associé un dépôt central au projet, nous allons « 
 Retourner sur la page github du projet (même URL que le projet) et constater que les commits on bien été propagées sur le dépôt central.
 
 === Récupération d'un projet déjà existant
-Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central. NB : il faut lancer la commande à la racine de votre workspace eclipse.
+Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le le projet de l'autre, ce qui consiste à récupérer le projet depuis le dépôt central.
 
 - *A* :
 
@@ -152,7 +152,7 @@ Attendre que chacun ait poussé ses modifications. Il reste ensuite à cloner le
 	git clone https://github.com/COMPTE-DE-A/A-project
 
 
-Importons ensuite le projet sous eclipse (Existing maven project).
+Importons ensuite le projet dans l'EDI.
 
 === Récupérer les modifications des autres développeurs
 - *A* : créer une nouvelle classe sur B-project, commit et push.
@@ -162,13 +162,13 @@ Importons ensuite le projet sous eclipse (Existing maven project).
 
 	git pull origin master
 
-** Vérifier que la classe créée par *B* est bien présente via Eclipse.
+** Vérifier que la classe créée par *B* est bien présente via l'EDI.
 - B :
 ** Attendre le push de *A*, puis récupérer les modifications de *A* sur le B-project grâce à la commande `git pull`, qui prend deux arguments : le dépôt duquel on récupère les modifications et la branche que l'on veut récupérer :
 
 	git pull origin master
 
-** Vérifier que la classe créée par *A* est bien présente via Eclipse.
+** Vérifier que la classe créée par *A* est bien présente via l'EDI.
 
 === Les branches locales
 La situation est la suivante : vous commencez à travailler sur une nouvelle fonctionnalité. Pour faciliter votre travail, vous souhaitez faire des commits réguliers, mais qu'ils n'aient pas de conséquence sur le travail des autres (parce que seul votre dernier commit donnera un produit fonctionnel). Nous allons donc créer une branche locale, sur laquelle nous effectuerons nos commits réguliers. Quand le développement de la fonctionnalité sera terminé, nous rapatrierons les modifications sur la branche principale (master).
@@ -179,8 +179,8 @@ Dans A-project, créer la branche :
 
 	git branch story1
 +
-Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story1, nous nous trouvons toujours dans master.
-Il faut donc ensuite informer Git que l'on travaille à présent dans la branche story1 :
+Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche `story1`, nous nous trouvons toujours dans master.
+Il faut donc ensuite informer Git que l'on travaille à présent dans la branche `story1` :
 
 	git checkout story1
 +
@@ -188,7 +188,7 @@ Relancer git branch pour vérifier que story1 est maintenant la branche courante
 +
 Maintenant, commencer le développement :
 
-* Créer une nouvelle classe appelée StoryOneService;
+* Créer une nouvelle classe appelée `StoryOneService`;
 * commit ;
 * Effectuer des modifications sur cette classe ;
 * commit ;
@@ -199,13 +199,12 @@ Le développement est maintenant terminé. Nous allons donc reporter nos dévelo
 
 	git checkout master
 +
-On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
-Nous allons à présent répercuter les changements effectués dans la branche story1 sur la master :
+On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+Nous allons à présent répercuter les changements effectués dans la branche `story1` sur la branche `master` :
 
 	git merge --no-ff story1
 +
-Cette commande va créer un nouveau commit résultant du report des développments de story1 sur master.
-L'option --no-ff
+Cette commande va créer un nouveau commit résultant du report des développments de `story1` sur `master`.
 Par défaut, git merge story1 va prendre tous les commits individuels de la branche story1 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story1.
 +
 Il ne reste plus qu'à effectuer le push.
@@ -217,8 +216,8 @@ Dans A-project, créer la branche :
 
 	git branch story2
 +
-Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche story2, nous nous trouvons toujours dans master.
-Il faut donc ensuite informer Git que l'on travaille à présent dans la branche story2 :
+Pour savoir dans quelle branche on se trouve, il suffit le lancer git branch sans argument. Cela nous permet de constater que malgré la création de la branche `story2`, nous nous trouvons toujours dans `master`.
+Il faut donc ensuite informer Git que l'on travaille à présent dans la branche `story2` :
 
 	git checkout story2
 +
@@ -226,30 +225,29 @@ Relancer git branch pour vérifier que story2 est maintenant la branche courante
 +
 Maintenant, commencer le développement :
 
-* Créer une nouvelle classe appelée StoryTwoService;
+* Créer une nouvelle classe appelée `StoryTwoService` ;
 * commit ;
 * Effectuer des modifications sur cette classe ;
 * commit ;
 * Effectuer d'autres modifications ;
 * Commit.
 +
-Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, master. Pour ce faire, on se place d'abord dans la branche master :
+Le développement est maintenant terminé.Nous allons donc reporter nos développement sur la branche principale, `master`. Pour ce faire, on se place d'abord dans la branche master :
 
 	git checkout master
 +
-On peut alors constater dans Eclipse que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
+On peut alors constater dans l'EDI que le projet est revenu dans l'état d'avant nos développement, c'est-à-dire dans l'état dans lequel nous avons laissé master.
 +
 Avant de répercuter les changements effectués dans la branche story2 sur master, il faut mettre à jour master pour récupérer les changements des autres développeurs.
 Attendre que A ait effectué son push.
 Puis récupérer ses modifications avec un pull.
 +
-Nous pouvons à présent répercuter les changements effectués dans la branche story2 sur master :
+Nous pouvons à présent répercuter les changements effectués dans la branche `story2` sur `master` :
 
 	git merge --no-ff story2
 +
-Cette commande va créer un nouveau commit résultant du report des développments de story2 sur master.
-L'option --no-ff
-Par défaut, git merge story2 va prendre tous les commits individuels de la branche story2 et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est master). L'option --no-ff permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur story2.
+Cette commande va créer un nouveau commit résultant du report des développments de `story2` sur `master`.
+Par défaut, git merge story2 va prendre tous les commits individuels de la branche `story2` et les appliquer un par un sur la copie de traval dans (la branche courante qui dans notre cas est `master`). L'option `--no-ff` permet de ne faire qu'un seul commit qui sera la composition de tous les commits individuels successifs effecturés sur `story2`.
 +
 Il ne reste plus qu'à effectuer le push.
 
@@ -261,21 +259,21 @@ Il ne reste plus qu'à effectuer le push.
 
 	git log
 
-Le résultat nous donne beaucoup d'information sur les commits effectués. Pour un peu plus de clarté, on peut rajouter l'option --color :
+Le résultat nous donne beaucoup d'information sur les commits effectués. Pour un peu plus de clarté, on peut rajouter l'option `--color` :
 
 	git log --color
 
-Si l'on ne souhaite pas autant de détail sur les commits, on peut utiliser le format court avec l'option --oneline:
+Si l'on ne souhaite pas autant de détail sur les commits, on peut utiliser le format court avec l'option `--oneline` :
 
 	git log --color --oneline
 
-On peut aussi afficher l'historique sous forme de graphique en ajoutant l'option --graph :
+On peut aussi afficher l'historique sous forme de graphique en ajoutant l'option `--graph` :
 
 	git log --color --oneline --graph
 
 Sur le graphique, chaque commit est représenté par un *
 
-Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention explicitant quelle est la HEAD courante, il y a l'option --decorate :
+Enfin, si l'on souhaite visualiser les noms des branches ainsi que la mention explicitant quelle est la HEAD courante, il y a l'option `--decorate` :
 
 	git log --color --oneline --graph --decorate
 
@@ -293,7 +291,7 @@ Nous allons à présent voir comment gérer un conflit. Nous travaillons toujour
 * Renommer le champ field de CA en y.
 * Attendre que A ait effectué son push.
 * Effectuer un pull et Git avertit que le pull écraserait les modifications de l'arbre de travail.
-L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, Git fournit une commande très pratique : git stash pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
+L'une des manières de résoudre un tel conflit est de stocker ses modifications non soumises ailleurs que dans l'arbre de travail, de récupérer le travail des autres, puis de fusionner ses modifications avec la nouvelle copie de travail. Pour cela, Git fournit une commande très pratique : `git stash` pour stocker ses modifications non soumises ailleurs que dans l'arbre de travail, dans une pile appelée stash.
 B va donc effectuer
 
 	git stash
@@ -304,8 +302,7 @@ Il faut maintenant que B décide s'il vout appliquer ses modifications. Il va do
 
 	git difftool HEAD stash
 
-git difftool
-Est une commande qui peut prendre 1 ou 2 arguments. Dans notre cas, nous lui fournissons deux révisions à comparer. Pour chaque fichier différant dans les révisions, il va ouvrir un outil graphique de comparaison de fichier, parmi une liste dont il dispose en interne. Dans cette liste, il sélectionnera le premier qu'il trouve sur la machine.	Pour connaitre la liste complète, faire git difftool --tool-help.
+`git difftool` est une commande qui peut prendre 1 ou 2 arguments. Dans notre cas, nous lui fournissons deux révisions à comparer. Pour chaque fichier différant dans les révisions, il va ouvrir un outil graphique de comparaison de fichier, parmi une liste dont il dispose en interne. Dans cette liste, il sélectionnera le premier qu'il trouve sur la machine.	Pour connaitre la liste complète, faire `git difftool --tool-help`.
 
 
 Dans le comparateur, B doit ensuite résoudre le conflit entre ses modifications (se trouvant à présent dans le stash) et celles des autres développeurs (à présent dans sa copie de travail). Pour distinguer les 2 versions, vérifier le chemin qui est affiché dans le comparateur de fichier. Du côté stash, le chemin est auto-généré.
