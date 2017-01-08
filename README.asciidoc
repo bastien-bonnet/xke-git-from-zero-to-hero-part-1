@@ -64,7 +64,7 @@ La commande add de Git fonctionne différemment de celle de SVN :
 
 
 
-Lancez à nouveau la commande git status. On constate à présent que les fichiers ajoutés sont présents dans la section des changements qui vont êtres soumis (commit).
+Lancez à nouveau la commande `git status`. On constate à présent que les fichiers ajoutés sont présents dans la section des changements qui vont êtres soumis (commit).
 
 À présent, nous allons soumettre les changements dans le dépôt local avec la commande `git commit` :
 
